@@ -9,7 +9,7 @@ import {
 } from "./Card.styles";
 import { CardProps } from "./Card.types";
 
-const Card = ({ episode }: CardProps) => {
+const Card = ({ episode, onClick }: CardProps) => {
   return (
     <CardContainer>
       <CardDivider>
@@ -21,10 +21,7 @@ const Card = ({ episode }: CardProps) => {
         </InformationContainer>
       </CardDivider>
 
-      <Button
-        type="button"
-        onClick={() => console.log("show details", episode.id)}
-      >
+      <Button type="button" onClick={() => onClick()}>
         Detalhes
       </Button>
     </CardContainer>

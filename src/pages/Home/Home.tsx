@@ -4,9 +4,11 @@ import { EpisodesQuery, EpisodesVars } from "./Home.types";
 import { GET_EPISODES } from "./Home.queries";
 import { useState } from "react";
 import Card from "./Card/Card";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
 
   const { data, loading, error } = useQuery<EpisodesQuery, EpisodesVars>(
     GET_EPISODES,
@@ -14,6 +16,10 @@ const Home = () => {
       variables: { page },
     }
   );
+
+  const handleCardClick = (id: string) => {
+    navigate(`/episode/${id}`);
+  };
 
   const handleNextPage = () => {
     console.log("next page", data?.episodes.info.next);
@@ -49,7 +55,11 @@ const Home = () => {
 
       <EpisodesContainer>
         {data?.episodes.results.map((episode) => (
-          <Card episode={episode} key={episode.id} />
+          <Card
+            episode={episode}
+            key={episode.id}
+            onClick={() => handleCardClick(episode.id)}
+          />
         ))}
       </EpisodesContainer>
 

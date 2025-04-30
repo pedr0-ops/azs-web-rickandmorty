@@ -1,8 +1,15 @@
+import { TabNav } from "@radix-ui/themes";
 import { HeaderContainer } from "./Header.styles";
 
 const Header = () => {
   return (
     <HeaderContainer>
+      <TabNav.Root>
+        <TabNav.Link href="/" active>
+          Home
+        </TabNav.Link>
+      </TabNav.Root>
+
       <h1>Rick And Morty</h1>
 
       <h2>
