@@ -8,17 +8,14 @@ export const HeaderContainer = styled.header`
   align-items: flex-start;
 
   height: 50vh;
-
   padding: 3rem;
   flex: 1;
   gap: 1rem;
-
 
   background-image: ${()=> `url(${image})`}; ;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
 
   h1 {
     font-size: 5rem;
@@ -31,11 +28,8 @@ export const HeaderContainer = styled.header`
   h2 {
     font-size: 1rem;
     color: #FFFFFF;
-    text-align: justify;
-    font-family: sans-serif;
-
+    text-align: left;
     max-width: 40%
   }
-
 
   `;

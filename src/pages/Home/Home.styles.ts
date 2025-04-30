@@ -13,13 +13,21 @@ export const HomeContainer = styled.div`
   flex: 1;
 `;
 
+
+
+
 export const EpisodesContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  max-width: 100%; 
+  row-gap: 2.5rem;    
+  column-gap: 2rem; 
   width: 100%;
-  height: 100%;
   padding: 20px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr; 
+  }
 `;
 
 export const Title = styled.h1`
@@ -30,7 +38,5 @@ export const Title = styled.h1`
   font-size: 3rem;
   font-family: sans-serif;
   color: #85D75B;
-  
-
 
 `;
