@@ -1,14 +1,28 @@
-import { TabNav } from "@radix-ui/themes";
-import { HeaderContainer } from "./Header.styles";
+import { useLocation } from "react-router-dom";
+import {
+  HeaderContainer,
+  CustomTabLink,
+  CustomTabNavRoot,
+} from "./Header.styles";
+import { Link } from "react-router-dom";
 
 const Header = () => {
+  const { pathname } = useLocation();
+
   return (
     <HeaderContainer>
-      <TabNav.Root>
-        <TabNav.Link href="/" active>
+      <CustomTabNavRoot>
+        <CustomTabLink as={Link} to="/" active={pathname === "/"}>
           Home
-        </TabNav.Link>
-      </TabNav.Root>
+        </CustomTabLink>
+        <CustomTabLink
+          as={Link}
+          to="/favorites"
+          active={pathname === "/favorites"}
+        >
+          Meus Favoritos
+        </CustomTabLink>
+      </CustomTabNavRoot>
 
       <h1>Rick And Morty</h1>
 

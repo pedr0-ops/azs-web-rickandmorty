@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import image from '../../assets/rick-morty.jpg';
+import { TabNav } from "@radix-ui/themes/src/index.js";
+
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -33,3 +35,35 @@ export const HeaderContainer = styled.header`
   }
 
   `;
+
+export const CustomTabNavRoot = styled(TabNav.Root)`
+  display: flex;
+  background-color: #123524;
+  border-radius: 999px;
+  padding: 0.9rem;
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+`;
+
+export const CustomTabLink = styled(TabNav.Link)<{ active?: boolean }>`
+  all: unset;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-bottom: 2px solid transparent;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  &[data-active] {
+    border-bottom: 3px solid #c4ffb0;
+  }
+
+  ${({ active }) =>
+    active &&
+    `
+    border-bottom: 3px solid #c4ffb0;
+  `}
+
+`;

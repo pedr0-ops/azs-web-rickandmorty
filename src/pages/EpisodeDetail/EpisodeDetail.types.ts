@@ -1,9 +1,17 @@
+export enum StatusEnum {
+  Alive = "Alive",
+  Dead = "Dead",
+  Unknown = "unknown",
+}
+
+type StatusType = "Alive" | "Dead" | "unknown";
+
 export interface Character {
   id: string
   name: string
   image: string
   species: string
-  status: string
+  status: StatusType
 }
 
 export interface Episode {

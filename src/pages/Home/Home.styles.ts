@@ -14,8 +14,6 @@ export const HomeContainer = styled.div`
 `;
 
 
-
-
 export const EpisodesContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
