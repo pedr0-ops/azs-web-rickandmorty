@@ -33,19 +33,19 @@ const EpisodeDetail = () => {
   if (loading)
     return (
       <EpisodeContainer>
-        <EpisodeTitle>Carregando...</EpisodeTitle>;
+        <EpisodeTitle>Carregando...</EpisodeTitle>
       </EpisodeContainer>
     );
   if (error)
     return (
       <EpisodeContainer>
-        <EpisodeTitle>Erro ao carregar o episódio</EpisodeTitle>;
+        <EpisodeTitle>Erro ao carregar o episódio</EpisodeTitle>
       </EpisodeContainer>
     );
   if (!data)
     return (
       <EpisodeContainer>
-        <EpisodeTitle>Episódio não encontrado</EpisodeTitle>;
+        <EpisodeTitle>Episódio não encontrado</EpisodeTitle>
       </EpisodeContainer>
     );
 
