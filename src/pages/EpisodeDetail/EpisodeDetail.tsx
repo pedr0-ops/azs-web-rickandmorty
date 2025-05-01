@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_EPISODE_BY_ID } from "./EpisodeDetail.queries";
 import { EpisodeQuery, EpisodeVars, StatusEnum } from "./EpisodeDetail.types";
@@ -18,6 +18,8 @@ import {
   StatusDead,
   TopBar,
   MarkSeenButton,
+  IconButton,
+  ArrowIcon,
 } from "./EpisodeDetail.styles";
 import { useDispatch, useSelector } from "react-redux";
 import { addWatched, removeWatched } from "../../store/episodes/episodesSlice";
@@ -29,7 +31,7 @@ const EpisodeDetail = () => {
   const watchedEpisodes = useSelector(
     (state: RootState) => state.episodes.watched
   );
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { data, loading, error } = useQuery<EpisodeQuery, EpisodeVars>(
@@ -76,6 +78,9 @@ const EpisodeDetail = () => {
     <EpisodeContainer>
       <TopBar>
         <Header>
+          <IconButton onClick={() => navigate(-1)}>
+            <ArrowIcon />
+          </IconButton>
           <EpisodeCode>{episode.id.padStart(2, "0")}</EpisodeCode>
           <div>
             <EpisodeTitle>{episode.name}</EpisodeTitle>

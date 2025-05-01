@@ -37,7 +37,7 @@ export const DateInformation = styled.div`
   align-items: center;
   font-size: 0.8rem;
   font-family: sans-serif;
-  color: #85D75B;
+  color: #B4BAAD;
 
 `;
 
@@ -85,7 +85,7 @@ export const CardStatus = styled.span`
   font-weight: bold;
   font-family: sans-serif;
   border: 1px solid #85D75B;
-  color: #B4BAAD;
+  color: #85D75B;
 
 `;
 

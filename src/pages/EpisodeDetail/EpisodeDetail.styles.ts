@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
 
 export const EpisodeContainer = styled.div`
   display: flex;
@@ -121,4 +122,32 @@ export const StatusAlive = styled.span`
 export const StatusDead = styled.span`
   color: #ff4d4f;
   font-weight: bold;
+`;
+
+export const IconButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color:#010011;
+
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+
+  writing-mode: vertical-rl;
+
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: scale(1.01);
+    cursor: pointer;
+  }
+`
+
+export const ArrowIcon = styled(ArrowLeftIcon)`
+  width: 50px;
+  height: 50px;
+  color: #76f45d;
 `;
