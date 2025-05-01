@@ -1,19 +1,31 @@
-import { EpisodesContainer, HomeContainer, Title } from "./Home.styles";
+import {
+  EpisodesContainer,
+  HomeContainer,
+  PageNumber,
+  PaginationButton,
+  PaginationContainer,
+  Title,
+} from "./Home.styles";
 import { useQuery } from "@apollo/client";
 import { EpisodesQuery, EpisodesVars } from "./Home.types";
 import { GET_EPISODES } from "./Home.queries";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "./Card/Card";
 import { useNavigate } from "react-router-dom";
+import { useSearch } from "../../contexts/SearchContext/SearchContext";
 
 const Home = () => {
   const [page, setPage] = useState(1);
+  const { name } = useSearch();
   const navigate = useNavigate();
 
   const { data, loading, error } = useQuery<EpisodesQuery, EpisodesVars>(
     GET_EPISODES,
     {
-      variables: { page },
+      variables: {
+        page,
+        name: name ? name : undefined,
+      },
     }
   );
 
@@ -34,6 +46,10 @@ const Home = () => {
       setPage(data.episodes.info.prev);
     }
   };
+
+  useEffect(() => {
+    setPage(1);
+  }, [name]);
 
   if (loading)
     return (
@@ -63,23 +79,23 @@ const Home = () => {
         ))}
       </EpisodesContainer>
 
-      <div style={{ marginTop: "16px" }}>
-        <button
-          type="button"
-          onClick={() => handlePrevPage()}
+      <PaginationContainer>
+        <PaginationButton
+          onClick={handlePrevPage}
           disabled={!data?.episodes.info.prev}
         >
           Página Anterior
-        </button>
-        <span style={{ margin: "0 8px" }}>Página atual: {page}</span>
-        <button
-          type="button"
-          onClick={() => handleNextPage()}
+        </PaginationButton>
+
+        <PageNumber>Página {page}</PageNumber>
+
+        <PaginationButton
+          onClick={handleNextPage}
           disabled={!data?.episodes.info.next}
         >
           Próxima Página
-        </button>
-      </div>
+        </PaginationButton>
+      </PaginationContainer>
     </HomeContainer>
   );
 };

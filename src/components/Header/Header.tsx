@@ -3,26 +3,59 @@ import {
   HeaderContainer,
   CustomTabLink,
   CustomTabNavRoot,
+  SearchBarContainer,
+  SearchIcon,
+  SearchInput,
+  Container,
 } from "./Header.styles";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useSearch } from "../../contexts/SearchContext/SearchContext";
 
-const Header = () => {
+interface HeaderProps {
+  showSearch?: boolean;
+}
+
+const Header = ({ showSearch = false }: HeaderProps) => {
   const { pathname } = useLocation();
+  const { setName } = useSearch();
+  const [localName, setLocalName] = useState("");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setName(localName);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [localName, setName]);
 
   return (
     <HeaderContainer>
-      <CustomTabNavRoot>
-        <CustomTabLink as={Link} to="/" active={pathname === "/"}>
-          Home
-        </CustomTabLink>
-        <CustomTabLink
-          as={Link}
-          to="/favorites"
-          active={pathname === "/favorites"}
-        >
-          Meus Favoritos
-        </CustomTabLink>
-      </CustomTabNavRoot>
+      <Container>
+        <CustomTabNavRoot>
+          <CustomTabLink as={Link} to="/" active={pathname === "/"}>
+            Home
+          </CustomTabLink>
+          <CustomTabLink
+            as={Link}
+            to="/favorites"
+            active={pathname === "/favorites"}
+          >
+            Meus Favoritos
+          </CustomTabLink>
+        </CustomTabNavRoot>
+
+        {showSearch && (
+          <SearchBarContainer onSubmit={(e) => e.preventDefault()}>
+            <SearchIcon />
+            <SearchInput
+              placeholder="PESQUISAR EPISÓDIO"
+              value={localName}
+              onChange={(e) => setLocalName(e.target.value)}
+            />
+          </SearchBarContainer>
+        )}
+      </Container>
 
       <h1>Rick And Morty</h1>
 

@@ -11,6 +11,7 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   align-items: center;
   flex: 1;
+  min-height: 100%;
 `;
 
 
@@ -37,4 +38,40 @@ export const Title = styled.h1`
   font-family: sans-serif;
   color: #85D75B;
 
+`;
+
+export const PaginationContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 16px;
+`;
+
+export const PaginationButton = styled.button`
+  background-color: #85D75B; 
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color:rgb(72, 142, 37);
+    transform: scale(1.05); 
+  }
+
+  &:disabled {
+    background-color:rgb(195, 241, 187);
+    color: #010011;
+    cursor: not-allowed;
+  }
+`;
+
+export const PageNumber = styled.span`
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
 `;

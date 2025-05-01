@@ -21,6 +21,8 @@ export type EpisodesQuery = {
   };
 };
 
-export  type EpisodesVars = {
+export type EpisodesVars = {
   page: number;
+  name?: string;
+ 
 };
