@@ -52,7 +52,9 @@ export const CustomTabNavRoot = styled(TabNav.Root)`
   display: flex;
   background-color: #123524;
   border-radius: 999px;
-  padding: 0.6rem;
+  padding-right: 40px;
+  padding-left: 40px;
+  padding-top: 10px;
   justify-content: center;
   gap: 1.5rem;
   list-style: none;

@@ -7,17 +7,32 @@ import {
   Title,
 } from "./Home.styles";
 import { useQuery } from "@apollo/client";
-import { EpisodesQuery, EpisodesVars } from "./Home.types";
+import { Episode, EpisodesQuery, EpisodesVars } from "./Home.types";
 import { GET_EPISODES } from "./Home.queries";
 import { useEffect, useState } from "react";
-import Card from "./Card/Card";
 import { useNavigate } from "react-router-dom";
 import { useSearch } from "../../contexts/SearchContext/SearchContext";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import {
+  addFavorite,
+  removeFavorite,
+} from "../../store/episodes/episodesSlice";
+import Card from "../../components/Card/Card";
 
 const Home = () => {
   const [page, setPage] = useState(1);
   const { name } = useSearch();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { favoriteEpisodes, watchedEpisodes } = useSelector(
+    (state: RootState) => {
+      return {
+        favoriteEpisodes: state.episodes.favorites,
+        watchedEpisodes: state.episodes.watched,
+      };
+    }
+  );
 
   const { data, loading, error } = useQuery<EpisodesQuery, EpisodesVars>(
     GET_EPISODES,
@@ -34,17 +49,31 @@ const Home = () => {
   };
 
   const handleNextPage = () => {
-    console.log("next page", data?.episodes.info.next);
     if (data?.episodes.info.next) {
       setPage(data.episodes.info.next);
     }
   };
 
   const handlePrevPage = () => {
-    console.log("prev page", data?.episodes.info.prev);
     if (data?.episodes.info.prev) {
       setPage(data.episodes.info.prev);
     }
+  };
+
+  const handleFavoriteClick = (episode: Episode) => {
+    if (favoriteEpisodes.some((e) => e.id === episode.id)) {
+      dispatch(removeFavorite(episode.id));
+    } else {
+      dispatch(addFavorite(episode));
+    }
+  };
+
+  const isEpisodeFavorite = (episode: Episode) => {
+    return favoriteEpisodes.some((e) => e.id === episode.id);
+  };
+
+  const isEpisodeWatched = (episode: Episode) => {
+    return watchedEpisodes.some((e) => e.id === episode.id);
   };
 
   useEffect(() => {
@@ -72,9 +101,13 @@ const Home = () => {
       <EpisodesContainer>
         {data?.episodes.results.map((episode) => (
           <Card
-            episode={episode}
             key={episode.id}
+            episode={episode}
             onClick={() => handleCardClick(episode.id)}
+            showFavoriteAction
+            onFavoriteClick={() => handleFavoriteClick(episode)}
+            isFavorite={isEpisodeFavorite(episode)}
+            watched={isEpisodeWatched(episode)}
           />
         ))}
       </EpisodesContainer>

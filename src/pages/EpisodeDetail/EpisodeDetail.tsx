@@ -19,9 +19,18 @@ import {
   TopBar,
   MarkSeenButton,
 } from "./EpisodeDetail.styles";
+import { useDispatch, useSelector } from "react-redux";
+import { addWatched, removeWatched } from "../../store/episodes/episodesSlice";
+import { Episode } from "../Home/Home.types";
+import { RootState } from "../../store/store";
 
 const EpisodeDetail = () => {
   const { id } = useParams<{ id: string }>();
+  const watchedEpisodes = useSelector(
+    (state: RootState) => state.episodes.watched
+  );
+
+  const dispatch = useDispatch();
 
   const { data, loading, error } = useQuery<EpisodeQuery, EpisodeVars>(
     GET_EPISODE_BY_ID,
@@ -29,6 +38,18 @@ const EpisodeDetail = () => {
       variables: { id: id ?? "" },
     }
   );
+
+  const isEpisodeWatched = watchedEpisodes.some(
+    (episode) => episode.id === data?.episode.id
+  );
+
+  const handleMarkSeenClick = (episode: Episode) => {
+    if (isEpisodeWatched) {
+      dispatch(removeWatched(episode.id));
+    } else {
+      dispatch(addWatched(episode));
+    }
+  };
 
   if (loading)
     return (
@@ -61,7 +82,9 @@ const EpisodeDetail = () => {
             <AirDate>{episode.air_date}</AirDate>
           </div>
         </Header>
-        <MarkSeenButton>Marcar como visto</MarkSeenButton>
+        <MarkSeenButton onClick={() => handleMarkSeenClick(episode)}>
+          {isEpisodeWatched ? "Marcar como não visto" : "Marcar como visto"}
+        </MarkSeenButton>
       </TopBar>
 
       <CharacterList>

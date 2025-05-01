@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { HeartIcon, HeartFilledIcon } from "@radix-ui/react-icons";
+
 
 export const CardContainer = styled.div`
   display: flex;
@@ -39,6 +41,13 @@ export const DateInformation = styled.div`
 
 `;
 
+export const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  
+`;
+
 export const Title = styled.div`
   display: flex;
   justify-content: center;
@@ -67,6 +76,25 @@ export const SubTitle = styled.div`
 
 `;
 
+export const CardStatus = styled.span`
+  border-radius: 20px;
+  padding: 0.2rem 0.8rem;
+
+  max-height: 20px;
+  font-size: 0.6rem;
+  font-weight: bold;
+  font-family: sans-serif;
+  border: 1px solid #85D75B;
+  color: #B4BAAD;
+
+`;
+
+export const ActionContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+`;
+
 export const Button = styled.button`
   display: flex;
   justify-content: center;
@@ -92,3 +120,36 @@ export const Button = styled.button`
     cursor: pointer;
   }
 `
+export const IconButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #252525;
+
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+
+  writing-mode: vertical-rl;
+
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: scale(1.01);
+    cursor: pointer;
+  }
+`
+
+export const HeartIconCustom = styled(HeartIcon)`
+  width: 20px;
+  height: 20px;
+  color: #85D75B;
+`;
+
+export const HeartFilledCustom = styled(HeartFilledIcon)`
+  width: 20px;
+  height: 20px;
+  color: #85D75B;
+`;
