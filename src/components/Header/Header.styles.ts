@@ -16,14 +16,14 @@ export const HeaderContainer = styled.header`
   flex: 1;
   gap: 1rem;
 
-  background-image: ${()=> `url(${image})`}; ;
+  background-image: ${() => `url(${image})`};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   h1 {
     font-size: 5rem;
-    color: #85D75B;
+    color: #85d75b;
     font-family: sans-serif;
     text-align: start;
     margin: 0;
@@ -31,11 +31,27 @@ export const HeaderContainer = styled.header`
 
   h2 {
     font-size: 1rem;
-    color: #FFFFFF;
+    color: #ffffff;
     text-align: left;
-    max-width: 40%
+    max-width: 40%;
   }
 
+  @media (max-width: 850px) {
+    padding: 1rem;
+    height: auto;
+
+    h1 {
+      font-size: 2.5rem;
+      text-align: left;
+      width: 100%;
+    }
+
+    h2 {
+      font-size: 0.875rem;
+      max-width: 50%;
+      text-align: left;
+    }
+  }
 `;
 
 export const Container = styled.div`
@@ -43,21 +59,30 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-
   width: 100%;
+
+  @media (max-width: 850px) {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 `;
 
 export const CustomTabNavRoot = styled(TabNav.Root)`
   display: flex;
   background-color: #123524;
   border-radius: 999px;
-  padding-right: 40px;
-  padding-left: 40px;
-  padding-top: 10px;
+  padding: 10px 30px;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1rem;
   list-style: none;
+
+  @media (max-width: 850px) {
+    flex-wrap: wrap;
+    padding: 8px 16px;
+    gap: 0.5rem;
+  }
 `;
 
 export const CustomTabLink = styled(TabNav.Link)<{ active?: boolean }>`
@@ -80,23 +105,38 @@ export const CustomTabLink = styled(TabNav.Link)<{ active?: boolean }>`
     border-bottom: 3px solid #c4ffb0;
   `}
 
+  @media (max-width: 850px) {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
 `;
 
 export const SearchBarContainer = styled.form`
   display: flex;
   align-items: center;
-  background-color: #85D75B;;
+  background-color: #85d75b;
   border-radius: 50px;
-  padding: 12px 20px;
+  padding: 10px 16px;
   gap: 8px;
   max-width: 250px;
   width: 100%;
+
+  @media (max-width:  850px) {
+    max-width: 60%;
+    padding: 8px 12px;
+
+  }
 `;
 
 export const SearchIcon = styled(MagnifyingGlassIcon)`
   width: 20px;
   height: 20px;
   color: #000;
+
+  @media (max-width:  850px) {
+    width: 16px;
+    height: 16px;
+  }
 `;
 
 export const SearchInput = styled.input`
@@ -111,4 +151,9 @@ export const SearchInput = styled.input`
     color: #000;
     opacity: 0.7;
   }
+
+  @media (max-width: 850px) {
+    font-size: 0.75rem;
+  }
 `;
+

@@ -21,47 +21,78 @@ export const TopBar = styled.div`
   align-items: center;
 
   width: 100%;
-  
   padding: 2rem;
   margin-bottom: 32px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 1rem;
+  }
 `;
 
 export const Header = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: left;
+
+  }
 `;
 
 export const EpisodeCode = styled.span`
   font-size: 40px;
   font-weight: 700;
   color: #76f45d;
+
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
 `;
 
 export const EpisodeTitle = styled.h1`
   font-size: 24px;
   margin: 0;
   color: #76f45d;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 export const AirDate = styled.p`
   margin: 0;
   color: #ccc;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 export const MarkSeenButton = styled.button`
   background: transparent;
   border: 2px solid #76f45d;
   color: #76f45d;
-  padding: 8px 16px;
-  font-size: 12px;
-  text-transform: uppercase;
-  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.3s ease, color 0.3s ease;
 
   &:hover {
     background: #76f45d;
-    color: #000;
+    color: #010011;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    font-size: 0.9rem;
   }
 `;
 
@@ -144,10 +175,22 @@ export const IconButton = styled.button`
     transform: scale(1.01);
     cursor: pointer;
   }
-`
+
+  @media (max-width: 900px) {
+    padding: 0;
+  }
+
+`;
 
 export const ArrowIcon = styled(ArrowLeftIcon)`
   width: 50px;
   height: 50px;
   color: #76f45d;
+
+
+  
+  @media (max-width: 900px) {
+    width: 30px;
+    height: 30px;
+  }
 `;

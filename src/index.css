@@ -4,7 +4,6 @@
 * {
   box-sizing: border-box;
   font-family: "DM Sans", sans-serif;
-  /* overflow: hidden; */
 }
 
 html,
@@ -15,7 +14,6 @@ body {
   padding-left: 5%;
   padding-right: 5%;
 
-  /* overflow: hidden; */
   height: 100vh;
 
   -webkit-font-smoothing: antialiased;
@@ -25,4 +23,12 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
