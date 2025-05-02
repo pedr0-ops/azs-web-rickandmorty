@@ -1,54 +1,53 @@
-# React + TypeScript + Vite
+# Rick and Morty Episodes Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto front-end desenvolvido com **React**, **TypeScript** e **Vite**, que permite gerenciar episódios da série **Rick and Morty**. A aplicação permite visualizar episódios, acessar seus detalhes, favoritar, marcar como visto e realizar buscas de forma rápida e intuitiva.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologias Utilizadas
 
-## Expanding the ESLint configuration
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [GraphQL](https://graphql.org/)
+- [Styled Components](https://styled-components.com/)
+- [Yarn](https://yarnpkg.com/)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 📁 Estrutura de Pastas
+
+```plaintext
+src/
+│
+├── assets/           # Arquivos estáticos como imagens e ícones
+├── components/       # Componentes reutilizáveis (botões, cards, etc.)
+├── contexts/         # Context API para estados locais específicos
+├── graphql/          # Configuração e utilitários do GraphQL
+├── pages/            # Páginas principais da aplicação
+│   └── exemplo/
+│       ├── exemplo.queries.ts   # GraphQL queries/mutations para a página
+│       ├── exemplo.styles.ts    # Estilos com styled-components
+│       ├── exemplo.types.ts     # Tipagens específicas da página
+│       └── exemplo.tsx          # Componente principal da página
+├── routes/           # Arquivo de rotas da aplicação
+└── store/            # Configuração do Redux (slices, reducers, store)
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Como Executar o Projeto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 1️⃣ Instale as dependências
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+yarn install
 ```
+
+### 2️⃣ Execute o projeto
+
+```bash
+yarn dev
+```
+
+Abra [http://localhost:5173/](http://localhost:5173/) no navegador para visualizar o projeto.

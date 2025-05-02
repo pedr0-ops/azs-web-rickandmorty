@@ -1,6 +1,4 @@
 import { Episode } from "../../pages/Home/Home.types";
-
-
 export interface CardProps {
   episode: Episode;
   showFavoriteAction?: boolean;
